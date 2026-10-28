@@ -3,7 +3,9 @@ name: Build APK
 # Запускается при каждой загрузке изменений и вручную (вкладка Actions → Build APK → Run workflow)
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - "**"
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -16,7 +18,9 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - uses: android-actions/setup-android@v3
+      # Android SDK уже установлен на сервере; принимаем лицензии, чтобы Gradle мог докачать недостающее
+      - name: Лицензии Android SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
 
       - uses: gradle/actions/setup-gradle@v4
         with:
