@@ -1,0 +1,33 @@
+# Gradle / Android Studio
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Ключи подписи и секреты — никогда в репозиторий
+*.jks
+*.keystore
+# Исключение: учебный ключ debug-подписи (пароль общеизвестный, секрета в нём нет)
+!app/debug.keystore
+keystore.properties
+.env
+
+# Артефакты сборки
+*.apk
+*.aab
+
+# Рабочие данные и тестовые фото
+_inbox/
+samples/
+
+# Обучение: окружение и результаты. Готовая модель обучена на личных фото —
+# в репозиторий не коммитим, кладём в приложение вручную.
+training/venv/
+training/out/
+app/src/main/assets/photo_model.tflite
+*.tflite
+.DS_Store
